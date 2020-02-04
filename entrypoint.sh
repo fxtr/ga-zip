@@ -1,3 +1,8 @@
 #!/bin/sh -l
 
-echo "hello $1"
+set -e
+set -o xtrace
+cd $WORKDIR
+# And zip everything up
+zip -r -uq $DESTINATION $TARGET
+cd -

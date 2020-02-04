@@ -1,5 +1,9 @@
-# Container Action Template
+# Zip action
 
-To get started, click the `Use this template` button on this repository [which will create a new repository based on this template](https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates/).
+Github action used to zip a folder for lambda use
+This is necesary because we need to zip files without relative folder paths, so lamba can unpack them.
 
-For info on how to build your first Container action, see the [toolkit docs folder](https://github.com/actions/toolkit/blob/master/docs/container-action.md).
+Takes three parameters
+- target: files to zip
+- workdir: the folder from which we run the zip command
+- destination: destination of the zipfile

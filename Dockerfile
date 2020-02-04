@@ -1,7 +1,11 @@
-FROM alpine:3.10
+FROM alpine:3.10.1
 
-COPY LICENSE README.md /
+ENV TARGET='./*'
+ENV WORKDIR='./tmp'
+ENV DESTINATION='../service.zip'
 
+RUN apk add zip
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

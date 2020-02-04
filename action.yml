@@ -1,12 +1,20 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: 'Zip action'
+description: 'Github action used to zip a folder for lambda use'
+author: 'Fixter'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  target:
+    description: 'Folders/files to zip'
+    default: './*'
+  workdir:
+    description: 'Folder to cd into before running zip'
+    default: './tmp'
+  destination:
+    description: 'Path of the output zip'
+    default: '../service.zip'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.myInput }}
+  env:
+    TARGET: ${{ inputs.target }}
+    WORKDIR: ${{ inputs.workdir }}
+    DESTINATION: ${{ inputs.destination }}
